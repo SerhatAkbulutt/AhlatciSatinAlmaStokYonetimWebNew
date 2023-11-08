@@ -1,0 +1,92 @@
+﻿
+<div class="card border-light border">
+    <h6 class="card-header">Stok İşlemleri</h6>
+    <div class="card-body">
+        <ul class="nav nav-tabs nav-bordered mb-3">
+            <li class="nav-item">
+                <a href="#stockPage" data-bs-toggle="tab" aria-expanded="true" class="nav-link active">
+                    Stok İşlemleri
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#stockOperationPage" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                    Stok Hareketleri
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active show" id="stockPage">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h5 class="bg-light p-2" style="margin-top: -1px;"><i class="mdi mdi-package-variant-closed me-1"></i> Filtre: Kategori</h5>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end">
+                            <select class="form-select float-end" id="categoriyOption" onChange="categoryChange()" style="min-width:180px;">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="table-responsive">
+                    <div id="divStocks">
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane " id="stockOperationPage">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h5 class="bg-light p-2" style="margin-top: -1px;"><i class="mdi  mdi-newspaper-variant me-1"></i> Filtre: Ürün</h5>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end">
+                            <select class="form-select float-end" id="productOption" onChange="productChange()" style="min-width:180px;">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="table-responsive">
+                    <div id="divStockOperation">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="stockModal" tabindex="-1" role="dialog" aria-labelledby="stockModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="stockModalLabel">Stok Çıkış Bilgileri</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row pb-2 justify-content-center">
+                    <img src="~/assets/images/null.png" id="productImage" class="img-fluid"
+                         style="width:180px; height:140px;" alt="Product-img">
+                </div>
+                <div class="col-auto pt-1">
+                    <div class="d-flex align-items-center px-2">
+                        <label class="me-2" style="width:120px;">Stok Bilgisi:</label>
+                        <input type="number" min="1" max="100" id="productQuantity" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="col-auto pt-2 pb-4">
+                    <div class="d-flex align-items-center px-2">
+                        <label class="me-2" style="width:120px;">Çıkış Adedi:</label>
+                        <input type="number" min="1" max="100" id="inputQuantity" class="form-control" required/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-light" data-bs-dismiss="modal">Vazgeç</button>
+                <button type="button" class="btn btn-sm btn-primary" onclick="stockOutAction()">Çıkış Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/stock/manageStock.js"></script>

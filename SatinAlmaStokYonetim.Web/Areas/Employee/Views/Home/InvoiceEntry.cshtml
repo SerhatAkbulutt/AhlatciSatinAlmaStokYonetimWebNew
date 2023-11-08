@@ -1,0 +1,166 @@
+﻿
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-4">
+
+                <h5 class="mb-3  bg-light p-2">
+                    <i class="mdi mdi-office-building me-1"></i>Talep
+                </h5>
+                <div class="col-auto">
+                    <div class="d-flex align-items-center px-2">
+                        <label class="me-2" style="width:150px;">Talep No</label>
+                        <select class="form-select" id="requestsOption" onchange="requestNoChange()" style="min-width:180px;">
+                            <option selected="" disabled="" value="0">Talep Seç...</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h5 class="mb-3 bg-light p-2">
+                    <i class="mdi mdi-office-building me-1"></i>Fatura Tipi
+                </h5>
+                <div class="col-auto">
+                    <div class="d-flex align-items-center px-2">
+                        <label class="me-2" style="width:160px;">Fatura Tipi:</label>
+                        <select class="form-select" id="typeOption" onchange="typeOption()">
+                            <option selected="" value="1"> Alış </option>
+                            <option value="2"> Iade </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <h5 class="mb-3 bg-light p-2">
+                    <i class="mdi mdi-office-building me-1"></i>Tedarikçi Firma
+                </h5>
+                <div class="col-auto">
+                    <div class="d-flex align-items-center px-2">
+                        <label class="me-2" style="width:80px;">Firma:</label>
+                        <select class="form-select" id="suppliersOption" onchange="suppliersOptionChange()">
+                            <option selected="" disabled="" value="0">Tedarikçi Firmayı Seç...</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body" style="min-height:400px;">
+        <h5 class="bg-light p-2">
+            <i class="mdi mdi-office-building me-1"></i>Fatura Detayları
+        </h5>
+
+        <div id="divInvoice">
+        </div>
+
+        <div class="row">
+
+            <div class="col-6">
+                <div class="border p-3 mt-4 mt-lg-0 rounded">
+                    <h4 class="header-title mb-3">Fatura Bilgileri</h4>
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <tbody>
+                                <tr>
+                                    <td>Fatura Tarihi : </td>
+                                    <td>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control form-control-light" id="datapicker1">
+                                            <span class="input-group-text bg-primary border-primary text-white">
+                                                <i class="mdi mdi-calendar-range font-13"></i>
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Fatura No : </td>
+                                    <td> <input type="number" id="inputInvoiceNo" value="0" class="form-control" /></td>
+                                </tr>                         
+                                <tr>
+                                    <td>Kur : </td>
+                                    <td>
+                                        <select class="form-select" id="currencyOption" onchange="currencyChange()" style="min-width:180px;">
+                                            <option value="1">Türk Lirası</option>
+                                            <option value="2">Dolar</option>
+                                            <option value="3">Euro</option>
+                                            <option value="4">Sterlin</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>İndirim Tutarı :</td>
+                                    <td>
+                                        <input type="number" onchange="calculator()" id="inputDiscount" value="0" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="border p-3 mt-4 mt-lg-0 rounded">
+                    <h4 class="header-title mb-3">Fiyat Özeti</h4>
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <tbody>
+                                <tr>
+                                    <td><b>Tutar :</b></td>
+                                    <td><b id="productTotalAmount" class="float-end">0₺</b></td>
+                                </tr>
+                                <tr>
+                                    <td><b>KDV Tutarı :</b></td>
+                                    <td><b id="kdv" class="float-end">0₺</b></td>
+                                </tr>
+                                <tr>
+                                    <td><b>İndirim :</b></td>
+                                    <td><b id="discount" class="float-end">0₺</b></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Net Tutar :</b></td>
+                                    <td><b id="totalAmount" class="float-end">0₺</b></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button type="button" onclick="createInvoice()" class="btn btn-primary ms-2 float-end">
+                                            <i class="mdi mdi-clipboard-list-outline me-1">
+                                            </i> Fatura Kes
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="invoiceEntryModal" tabindex="-1" role="dialog" aria-labelledby="invoiceEntryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="invoiceEntryModalLabel">Fatura Oluştur</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-auto pt-3 pb-3 text-center">
+                    <h4> Faturayı Oluşturmak İstiyor Musunuz?</h4>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-light" data-bs-dismiss="modal">Vazgeç</button>
+                <button type="button" class="btn btn-sm btn-primary" onclick="createInvoice()">Evet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/invoice/invoiceEntry.js"></script>

@@ -1,0 +1,165 @@
+﻿<div class="card">
+    <div class="card-body">
+        <div class="page-aside-left">
+            <div class="col-12">
+                <h5 class="mb-3 bg-light p-2">
+                    <i class="mdi mdi-office-building me-1"></i> Talep Listesi
+                </h5>
+
+                <!-- start search box -->
+                <div class="app-search">
+                    <form>
+                        <div class="mb-2 position-relative">
+                            <input type="text" class="form-control" id="searchRequest" autocomplete="off" placeholder="Talep No Ara...">
+                            <span class="mdi mdi-magnify search-icon"></span>
+                        </div>
+                    </form>
+                </div>
+                <!-- end search box -->
+
+                <div class="row">
+                    <div class="col">
+                        <div data-simplebar="init" style="max-height: 535px;">
+                            <div class="simplebar-wrapper" style="margin: 0px;">
+                                <div class="simplebar-height-auto-observer-wrapper">
+                                    <div class="simplebar-height-auto-observer"></div>
+                                </div>
+                                <div class="simplebar-mask">
+                                    <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                                        <div class="simplebar-content-wrapper"
+                                             style="height: auto; overflow: hidden scroll;">
+                                            <div class="simplebar-content" style="padding: 0px;">
+                                                <div id="divRequests"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="simplebar-placeholder"
+                                     style="width: 291px; height: 546px;"></div>
+                            </div>
+                            <div class="simplebar-track simplebar-horizontal"
+                                 style="visibility: visible;">
+                                <div class="simplebar-scrollbar" style="width: 0px; display: none;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-aside-right">
+            <div id="infoRequestNo">
+                <h5 class="mb-3 bg-light p-2">
+                    <i class="mdi mdi-office-building me-1"></i>Talep No: -
+                </h5>
+              
+            </div>
+            <div class="row">
+                <div class="text-sm-end" id="offerDetailButton" style="display:inline-block;">
+                    <button type="button" data-bs-toggle="modal" id="closeOfferEntryButton" data-bs-target="#closeOfferEntryModal" style="display:none;" class="btn btn-outline-danger ms-2 float-end">
+                        <i class="mdi mdi-clipboard-list-outline me-1">
+                        </i> Teklif Girişlerini Sonlandır.
+                    </button>
+                    <button type="button" data-bs-toggle="modal" onclick="detailBasket()" data-bs-target="#detailRequestModal" class="btn btn-light ms-2 float-end">
+                        <i class="mdi mdi-clipboard-list-outline me-1">
+                        </i> Talep Detayi
+                    </button>
+                    <div class="col-auto">
+                        <div class="d-flex align-items-center px-2">
+                            <label class="me-2" style="width:150px;">Tedarikçi Firma</label>
+                            <select class="form-select" id="suppliersOption"
+                                    onChange="supplierChange()" style="min-width:180px;">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-4 bg-light p-2">
+                <i class="mdi mdi-office-building me-1"></i> Talep Edilen Ürünler
+            </h5>
+            <div id="divOfferDetail">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="addOfferModal" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Teklif Bilgileri</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-hidden="true"></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-auto pt-3">
+                    <div id="divOfferDetail2"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-light"
+                        data-bs-dismiss="modal">
+                    Vazgeç
+                </button>
+                <button type="button" class="btn btn-sm btn-primary"
+                        id="addOfferButton" onclick="createOffer()">
+                    Teklifi
+                    Oluştur
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="detailRequestModal" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Talep Bilgileri</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-hidden="true"></button>
+            </div>
+            <div class="modal-body">
+                <div id="basketDetail" class="col-auto pt-3">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="test()" class="btn btn-sm btn-light"
+                        data-bs-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="closeOfferEntryModal" tabindex="-1" role="dialog"
+     aria-labelledby="closeOfferEntryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="closeOfferEntryModalLabel">Teklifleri Sonlandır</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-auto pt-3">
+                    <h4> Teklif Girişlerini Sonlandırmak İstiyor Musunuz?</h4>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-light" data-bs-dismiss="modal">
+                    Vazgeç
+                </button>
+                <button type="button" class="btn btn-sm btn-primary" onclick="closeOfferEntry()">
+                    Evet 
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/offer/createOffer.js"></script>

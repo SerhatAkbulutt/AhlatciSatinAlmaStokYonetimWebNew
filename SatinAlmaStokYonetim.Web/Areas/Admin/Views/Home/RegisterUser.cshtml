@@ -1,0 +1,78 @@
+﻿<div class="card border-light border">
+    <h6 class="card-header">Stok İşlemleri</h6>
+    <div class="card-body">
+        <div class="row mb-2">
+            <div class="col-sm-4">
+                <a href="javascript:void(0);" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Products</a>
+            </div>
+            <div class="col-sm-8">
+                <div class="text-sm-end">
+                    <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-cog-outline"></i></button>
+                    <button type="button" class="btn btn-light mb-2 me-1">Import</button>
+                    <button type="button" class="btn btn-light mb-2">Export</button>
+                </div>
+            </div><!-- end col-->
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-6">
+                <h5 class="bg-light p-2" style="margin-top: -1px;"><i class="mdi mdi-office-building me-1"></i> Filtre:</h5>
+            </div>
+            <div class="col-sm-6">
+                <div class="text-sm-end">
+                    <select class="form-select float-end" id="categoriyOption" onChange="categoryChange()" style="min-width:180px;">
+                    </select>
+                </div>
+            </div><!-- end col-->
+        </div>
+        <hr />
+        <div class="table-responsive">
+            <table class="table table-bordered w-100 dt-responsive nowrap" id="customDatatable">
+                <thead>
+                    <tr>
+                        <th>Kategori</th>
+                        <th>Ürün</th>
+                        <th>Ürün Adı</th>
+                        <th>Birim</th>
+                        <th>Adet</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ASOS Ridley High Waist</td>
+                        <td>$79.49</td>
+                        <td><span class="badge bg-primary">82 Pcs</span></td>
+                        <td>$6,518.18</td>
+                        <td><span class="badge bg-primary">82 Pcs</span></td>
+                        <td>$6,518.18</td>
+                    </tr>
+                    <tr>
+                        <td>ASOS Ridley High Waist</td>
+                        <td>$79.49</td>
+                        <td><span class="badge bg-primary">82 Pcs</span></td>
+                        <td>$6,518.18</td>
+                        <td><span class="badge bg-primary">82 Pcs</span></td>
+                        <td>$6,518.18</td>
+                    </tr>
+                    <tr>
+                        <td>ASOS Ridley High Waist</td>
+                        <td>$79.49</td>
+                        <td><span class="badge bg-primary">82 Pcs</span></td>
+                        <td>$6,518.18</td>
+                        <td><span class="badge bg-primary">82 Pcs</span></td>
+                        <td>$6,518.18</td>
+                    </tr>
+                    <tr>
+                        <td>ASOS Ridley High Waist</td>
+                        <td>$79.49</td>
+                        <td><span class="badge bg-primary">82 Pcs</span></td>
+                        <td>$6,518.18</td>
+                        <td><span class="badge bg-primary">82 Pcs</span></td>
+                        <td>$6,518.18</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

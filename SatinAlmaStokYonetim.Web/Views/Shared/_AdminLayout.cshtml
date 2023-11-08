@@ -1,0 +1,266 @@
+﻿@using SatinAlmaStokYonetim.Code;
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Layout - Ahlatcı Teknoloji - Kurumsal Yönetim Sistemi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link href="~/assets/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/images/favicon.ico" rel="shortcut icon">
+    <link href="~/assets/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style" disabled="disabled">
+    <link href="~/assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/assets/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="~/assets/js/vendor/dataTables.bootstrap5.js"></script>
+    <script src="~/assets/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="~/js/site.js"></script>
+    <script>
+        let CID = `@Repo.Session.CompanyId`;
+        let UID = `@Repo.Session.UserId`;
+        let DID = `@Repo.Session.DepartmentId`;
+        let CNA = `@Repo.Session.CompanyName`;
+        let DNA = `@Repo.Session.DepartmentName`
+    </script>
+
+</head>
+
+<body class="loading" data-layout="topnav" data-layout-config='{"layoutBoxed":false,"darkMode":false,"showRightSidebarOnStart": true}'>
+
+    <div class="wrapper">
+        <div class="content-page">
+            <div class="content">
+                <div class="navbar-custom topnav-navbar">
+                    <div class="container-fluid">
+                        <a href="" class="topnav-logo">
+                            <span class="topnav-logo-lg">
+                                <img src="~/assets/images/adminlogo.png" alt="">
+                            </span>
+                        </a>
+
+                        <ul class="list-unstyled topbar-menu float-end mb-0">
+
+
+                            <li class="dropdown notification-list topbar-dropdown d-none d-lg-block">
+                                <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" id="topbar-languagedrop" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <img src="~/assets/images/flags/turkiye.png" alt="user-image" class="me-1" height="12"> <span class="align-middle">Türkçe</span> <i class="mdi mdi-chevron-down"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu" aria-labelledby="topbar-languagedrop">
+
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <img src="~/assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Deutsch</span>
+                                    </a>
+
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <img src="~/assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">L'Italiano</span>
+                                    </a>
+
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <img src="~/assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Español</span>
+                                    </a>
+
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <img src="~/assets/images/flags/england.png" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
+                                    </a>
+
+                                </div>
+                            </li>
+
+                            <li class="dropdown notification-list">
+                                <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" id="topbar-notifydrop" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="dripicons-bell noti-icon"></i>
+                                    <span class="noti-icon-badge"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg" aria-labelledby="topbar-notifydrop">
+
+                                    <!-- item-->
+                                    <div class="dropdown-item noti-title">
+                                        <h5 class="m-0">
+                                            <span class="float-end">
+                                                <a href="javascript: void(0);" class="text-dark">
+                                                    <small>Hepsini Temizle</small>
+                                                </a>
+                                            </span>Bildirimler
+                                        </h5>
+                                    </div>
+
+                                    <div style="max-height: 230px;" data-simplebar="">
+                                    </div>
+
+                                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+                                        Hepsini Göster
+                                    </a>
+
+                                </div>
+                            </li>
+
+                            <li class="notification-list mt-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="color-scheme-mode" id="lightMode" onclick="lightModeTogle()">
+                                    <label class="form-check-label" for="lightMode">Işıklar</label>
+                                </div>
+                            </li>
+
+                            <li class="dropdown notification-list">
+                                <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <span class="account-user-avatar">
+                                        <img src="~/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                                    </span>
+                                    <span>
+                                        <span class="account-user-name">Soeng Souy</span>
+                                        <span class="account-position">Founder</span>
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown" aria-labelledby="topbar-userdrop">
+
+                                    <div class=" dropdown-header noti-title">
+                                        <h6 class="text-overflow m-0">Hoşgeldiniz!</h6>
+                                    </div>
+
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <i class="mdi mdi-account-circle me-1"></i>
+                                        <span>Hesabım</span>
+                                    </a>
+
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <i class="mdi mdi-lifebuoy me-1"></i>
+                                        <span>Destek</span>
+                                    </a>
+
+                                    <a asp-area ="" asp-controller="Account" asp-action="Logout" class="dropdown-item notify-item">
+                                        <i class="mdi mdi-logout me-1"></i>
+                                        <span>Çıkış Yap</span>
+                                    </a>
+
+                                </div>
+                            </li>
+
+                        </ul>
+                        <a class="navbar-toggle" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+                            <div class="lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                <!-- end Topbar -->
+
+
+                <div class="topnav">
+                    <div class="container-fluid">
+                        <nav class="navbar navbar-dark navbar-expand-lg topnav-menu">
+
+                            <div class="collapse navbar-collapse col-lg-6" id="topnav-menu-content">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle arrow-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class=" uil-building me-1"></i>Kurumsal İşlemler<div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <a asp-area="Admin" asp-controller="Home" asp-action="Company" class="dropdown-item">Şirket İşlemleri</a>
+
+                                            <a asp-area="Admin" asp-controller="Home" asp-action="Department" class="dropdown-item">Departman İşlemleri</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle arrow-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="uil-user me-1"></i>Kullanıcı İşlemleri<div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <a asp-area="Admin" asp-controller="Home" asp-action="Role" class="dropdown-item">Rol İşlemleri</a>
+
+                                            <a asp-area="Admin" asp-controller="Home" asp-action="Employee" class="dropdown-item">Personel İşlemleri</a>
+
+                                            <a asp-area="Admin" asp-controller="Home" asp-action="Authorize" class="dropdown-item">Yetkilendirme</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle arrow-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="uil-layer-group me-1"></i>Ürün İşlemleri<div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu">
+
+                                            <a asp-area="Admin" asp-controller="Home" asp-action="Product" class="dropdown-item">Ürün İşlemleri</a>
+
+                                            <a asp-area="Admin" asp-controller="Home" asp-action="ProductCategory" class="dropdown-item">Kategori İşlemleri</a>
+
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle arrow-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="uil-server-connection me-1"></i>Kayıtlar<div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <a asp-area="Admin" asp-controller="Home" asp-action="CreateRequest" class="dropdown-item">Talep Kayıtları</a>
+
+                                            <a asp-area="Admin" asp-controller="Home" asp-action="CreateRequest" class="dropdown-item">Teklif Kayıtları</a>
+
+                                            <a asp-area="Admin" asp-controller="Home" asp-action="CreateRequest" class="dropdown-item">Stok Kayıtları</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+
+
+                <div class="container-fluid">
+                  
+                    @RenderBody()
+
+ 
+
+
+                </div>
+                <!-- container -->
+
+            </div>
+            <!-- content -->
+            <!-- Footer Start -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <script>document.write(new Date().getFullYear())</script> © Kurumsal Yönetim Sistemi - Ahlatcı Teknoloji
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-md-end footer-links d-none d-md-block">
+                                <a asp-area="Admin" asp-controller="Home" asp-action="CreateRequest">Hakkında</a>
+                                <a asp-area="Admin" asp-controller="Home" asp-action="CreateRequest">Destek</a>
+                                <a asp-area="Admin" asp-controller="Home" asp-action="CreateRequest">Bizimle İletişime Geç</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+   
+
+    </div>
+    <!-- bundle -->
+    <script src="~/assets/js/vendor.min.js"></script>
+    <script src="~/assets/js/app.min.js"></script>
+
+    <!-- third party js -->
+
+    <script src="~/assets/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="~/assets/js/vendor/dataTables.bootstrap5.js"></script>
+    <script src="~/assets/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="~/assets/js/vendor/handlebars.min.js"></script>
+    <script src="~/assets/js/vendor/typeahead.bundle.min.js"></script>
+    <!-- Demo -->
+    <script src="~/assets/js/pages/demo.typehead.js"></script>
+    <script src="~/js/other.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,152 @@
+﻿
+<div class="card">
+    <div class="card-body">
+        <div class="page-aside-left">
+            <div class="col-12">
+                <h5 class="mb-3 bg-light p-2">
+                    <i class="mdi mdi-office-building me-1"></i> Talep Listesi
+                </h5>
+                <!-- start search box -->
+                <div class="app-search">
+                    <form>
+                        <div class="mb-2 position-relative">
+                            <input type="text" class="form-control" id="searchRequest" autocomplete="off" placeholder="Talep No Ara...">
+                            <span class="mdi mdi-magnify search-icon"></span>
+                        </div>
+                    </form>
+                </div>
+                <!-- end search box -->
+
+                <div class="row">
+                    <div class="col">
+                        <div data-simplebar="init" style="max-height: 535px;">
+                            <div class="simplebar-wrapper" style="margin: 0px;">
+                                <div class="simplebar-height-auto-observer-wrapper">
+                                    <div class="simplebar-height-auto-observer"></div>
+                                </div>
+                                <div class="simplebar-mask">
+                                    <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                                        <div class="simplebar-content-wrapper"
+                                             style="height: auto; overflow: hidden scroll;">
+                                            <div class="simplebar-content" style="padding: 0px;">
+                                                <div id="divRequests"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="simplebar-placeholder"
+                                     style="width: 291px; height: 546px;"></div>
+                            </div>
+                            <div class="simplebar-track simplebar-horizontal"
+                                 style="visibility: visible;">
+                                <div class="simplebar-scrollbar" style="width: 0px; display: none;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-aside-right">
+
+            <div id="infoRequestNo">
+                <h5 class="mb-3 bg-light p-2">
+                    <a class="text-dark" data-bs-toggle="collapse" href="#requestDetail" role="button" aria-expanded="true" aria-controls="requestDetail">
+                        <i class="mdi mdi-office-building me-1"></i>Talep No : <span id="requestInfo"></span> <span class="float-end">Detay +</span>
+                    </a>
+                </h5>
+                <div class="collapse" id="requestDetail">
+                    <div class="card mb-0">
+                        <div class="card-body">
+                            <div id="divRequestDetail"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="offerPage" style="display:none;">
+                <h5 class="mt-4 bg-light p-2">
+                    <i class="mdi mdi-office-building me-1"></i> Gelen Teklifler
+                </h5>
+                <div id="divOffers">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="declineModal" tabindex="-1" role="dialog"
+     aria-labelledby="declineModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="declineModalLabel">Teklifi Reddetmek İstiyor Musunuz?</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-hidden="true"></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-light"
+                        data-bs-dismiss="modal">
+                    Vazgeç
+                </button>
+                <button type="button" onclick="approveOk()" class="btn btn-sm btn-danger"
+                        data-bs-dismiss="modal">
+                    Evet
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="approveModal" tabindex="-1" role="dialog"
+     aria-labelledby="approveModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="approveModalLabel">Teklifi Onaylaylıyor Musunuz?</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-hidden="true"></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-light"
+                        data-bs-dismiss="modal">
+                    Vazgeç
+                </button>
+                <button type="button" onclick="approveOk()" class="btn btn-sm btn-success"
+                        data-bs-dismiss="modal">
+                    Evet
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="detailModal" tabindex="-1" role="dialog"
+     aria-labelledby="detailModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="detailModalLabel">Teklif Bilgileri</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-hidden="true"></button>
+            </div>
+            <div class="modal-body">
+                <div id="offerDetail" class="col-auto">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary"
+                        data-bs-dismiss="modal">
+                    Kapat
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/offer/approveOffer.js"></script>
